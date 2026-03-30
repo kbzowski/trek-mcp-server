@@ -1,6 +1,6 @@
 # trek-mcp-server
 
-MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 29 tools.
+MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 31 tools.
 
 ## Requirements
 
@@ -129,6 +129,10 @@ If you built from source, point to the compiled entry directly:
 - `trek_list_collab_notes` -list shared notes
 - `trek_create_collab_note` -create a shared note
 - `trek_send_message` -send a chat message
+
+### Files
+- `trek_list_files` -list uploaded files (with optional trash view)
+- `trek_update_file` -update file description or place/reservation association
 
 ### Discovery
 - `trek_search_places` -search places via map provider

@@ -11,6 +11,7 @@ import { registerReservationTools } from "./tools/reservations.js";
 import { registerCollabTools } from "./tools/collab.js";
 import { registerAccommodationTools } from "./tools/accommodations.js";
 import { registerDiscoveryTools } from "./tools/discovery.js";
+import { registerFileTools } from "./tools/files.js";
 
 const server = new McpServer({
 	name: "trek-mcp-server",
@@ -26,6 +27,7 @@ registerReservationTools(server);
 registerAccommodationTools(server);
 registerCollabTools(server);
 registerDiscoveryTools(server);
+registerFileTools(server);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
