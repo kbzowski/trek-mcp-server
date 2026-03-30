@@ -8,13 +8,25 @@
 		"type": "git",
 		"url": "https://github.com/kbzowski/trek-mcp-server.git"
 	},
-	"keywords": ["mcp", "trek", "travel", "planner", "claude", "ai", "model-context-protocol"],
+	"keywords": [
+		"mcp",
+		"trek",
+		"travel",
+		"planner",
+		"claude",
+		"ai",
+		"model-context-protocol"
+	],
 	"type": "module",
 	"main": "dist/index.js",
 	"bin": {
 		"trek-mcp-server": "dist/index.js"
 	},
-	"files": ["dist", "README.md", "LICENSE"],
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
 	"scripts": {
 		"start": "node dist/index.js",
 		"dev": "tsx src/index.ts",
@@ -32,6 +44,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.4.9",
 		"@types/node": "^25.5.0",
+		"lefthook": "^2.1.4",
 		"rimraf": "^6.1.3",
 		"tsx": "^4.21.0",
 		"typescript": "^6.0.2"
