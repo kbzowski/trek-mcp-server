@@ -11,6 +11,14 @@ Exposes 25 tools for managing trips, places, itineraries, budgets, packing lists
 
 ## Installation
 
+### Via npm (recommended)
+
+```bash
+npm install -g trek-mcp-server
+```
+
+### From source
+
 ```bash
 git clone https://github.com/kbzowski/trek-mcp-server.git
 cd trek-mcp-server
@@ -28,16 +36,16 @@ Set three environment variables:
 | `TREK_EMAIL` | Login email | `user@example.com` |
 | `TREK_PASSWORD` | Login password | `your-password` |
 
-### Claude Code (Linux/macOS)
+### Claude Code / Claude Desktop
 
-Add to `~/.claude/settings.json`:
+Add to your MCP settings (`~/.claude/settings.json` or `claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "trek": {
-      "command": "node",
-      "args": ["/path/to/trek-mcp-server/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "trek-mcp-server"],
       "env": {
         "TREK_URL": "http://localhost:3000",
         "TREK_EMAIL": "user@example.com",
@@ -48,45 +56,16 @@ Add to `~/.claude/settings.json`:
 }
 ```
 
-### Claude Code (Windows CMD)
-
-Add to `%USERPROFILE%\.claude\settings.json`:
+If installed from source, replace `"command"` and `"args"` with:
 
 ```json
 {
-  "mcpServers": {
-    "trek": {
-      "command": "node",
-      "args": ["C:\\path\\to\\trek-mcp-server\\dist\\index.js"],
-      "env": {
-        "TREK_URL": "http://localhost:3000",
-        "TREK_EMAIL": "user@example.com",
-        "TREK_PASSWORD": "your-password"
-      }
-    }
-  }
+  "command": "node",
+  "args": ["/path/to/trek-mcp-server/dist/index.js"]
 }
 ```
 
-### Claude Desktop
-
-Add to Claude Desktop config (`claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "trek": {
-      "command": "node",
-      "args": ["/path/to/trek-mcp-server/dist/index.js"],
-      "env": {
-        "TREK_URL": "http://localhost:3000",
-        "TREK_EMAIL": "user@example.com",
-        "TREK_PASSWORD": "your-password"
-      }
-    }
-  }
-}
-```
+On Windows use backslashes: `"args": ["C:\\path\\to\\trek-mcp-server\\dist\\index.js"]`
 
 ## Available Tools
 
