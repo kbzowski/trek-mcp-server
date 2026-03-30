@@ -138,6 +138,14 @@ If you built from source, point to the compiled entry directly:
 - `trek_search_places` -search places via map provider
 - `trek_get_weather` -get weather forecast for a location
 
+## Security Warning
+
+This MCP server has the same level of access to your TREK instance as the account whose credentials you configure. Any AI assistant using this server can read, create, modify, and delete trips, places, budgets, packing lists, reservations, accommodations, files, and all other data accessible to that account.
+
+**Use at your own risk.** The author takes no responsibility for any data loss, unintended modifications, or other damage caused by the use of this software.
+
+It is strongly recommended to use a dedicated account with limited access rather than an admin account.
+
 ## Authentication
 
 The server logs in on first API call using `TREK_EMAIL` and `TREK_PASSWORD`, caches the JWT token, and re-authenticates automatically when it expires. MFA is not supported -use an account without MFA.
