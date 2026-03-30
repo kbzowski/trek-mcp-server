@@ -36,7 +36,7 @@ Set three environment variables:
 | `TREK_EMAIL` | Login email | `user@example.com` |
 | `TREK_PASSWORD` | Login password | `your-password` |
 
-### Claude Code / Claude Desktop
+### Claude Code / Claude Desktop (Linux/macOS)
 
 Add to your MCP settings (`~/.claude/settings.json` or `claude_desktop_config.json`):
 
@@ -56,7 +56,29 @@ Add to your MCP settings (`~/.claude/settings.json` or `claude_desktop_config.js
 }
 ```
 
-If installed from source, replace `"command"` and `"args"` with:
+### Claude Code / Claude Desktop (Windows)
+
+On Windows, `npx` must be launched via `cmd /c`:
+
+```json
+{
+  "mcpServers": {
+    "trek": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "trek-mcp-server"],
+      "env": {
+        "TREK_URL": "http://localhost:3000",
+        "TREK_EMAIL": "user@example.com",
+        "TREK_PASSWORD": "your-password"
+      }
+    }
+  }
+}
+```
+
+### From source
+
+If installed from source, use `node` directly:
 
 ```json
 {
@@ -64,8 +86,6 @@ If installed from source, replace `"command"` and `"args"` with:
   "args": ["/path/to/trek-mcp-server/dist/index.js"]
 }
 ```
-
-On Windows use backslashes: `"args": ["C:\\path\\to\\trek-mcp-server\\dist\\index.js"]`
 
 ## Available Tools
 
