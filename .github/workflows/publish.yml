@@ -22,10 +22,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Generate changelog
-        id: changelog
-        run: |
-          npx conventional-changelog-cli -p conventionalcommits -r 1 -o /tmp/CHANGELOG.md
-          cat /tmp/CHANGELOG.md
+        run: npx conventional-changelog-cli -p conventionalcommits -r 1 -o /tmp/CHANGELOG.md
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
