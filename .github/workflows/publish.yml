@@ -16,56 +16,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate changelog from conventional commits
-        id: changelog
-        run: |
-          PREVIOUS_TAG=$(git tag --sort=-v:refname | sed -n '2p')
-          if [ -z "$PREVIOUS_TAG" ]; then
-            RANGE="HEAD"
-          else
-            RANGE="${PREVIOUS_TAG}..HEAD"
-          fi
-
-          FEATS=""
-          FIXES=""
-          DOCS=""
-          CHORES=""
-          OTHER=""
-
-          while IFS= read -r line; do
-            MSG=$(echo "$line" | sed 's/^[a-f0-9]* //')
-            case "$MSG" in
-              feat:*|feat\(*) FEATS="${FEATS}\n- ${MSG#feat: }" ; FEATS="${FEATS#\\n- feat(}" ;;
-              fix:*|fix\(*)   FIXES="${FIXES}\n- ${MSG#fix: }" ;;
-              docs:*|docs\(*) DOCS="${DOCS}\n- ${MSG#docs: }" ;;
-              chore:*|chore\(*|ci:*|ci\(*) CHORES="${CHORES}\n- ${MSG}" ;;
-              *)              OTHER="${OTHER}\n- ${MSG}" ;;
-            esac
-          done < <(git log --oneline $RANGE)
-
-          BODY=""
-          [ -n "$FEATS" ]  && BODY="${BODY}### Features\n${FEATS}\n\n"
-          [ -n "$FIXES" ]  && BODY="${BODY}### Bug Fixes\n${FIXES}\n\n"
-          [ -n "$DOCS" ]   && BODY="${BODY}### Documentation\n${DOCS}\n\n"
-          [ -n "$CHORES" ] && BODY="${BODY}### Maintenance\n${CHORES}\n\n"
-          [ -n "$OTHER" ]  && BODY="${BODY}### Other\n${OTHER}\n\n"
-
-          [ -z "$BODY" ] && BODY="No notable changes."
-
-          EOF_MARKER=$(dd if=/dev/urandom bs=15 count=1 2>/dev/null | base64)
-          echo "body<<${EOF_MARKER}" >> $GITHUB_OUTPUT
-          echo -e "$BODY" >> $GITHUB_OUTPUT
-          echo "${EOF_MARKER}" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          body: ${{ steps.changelog.outputs.body }}
-
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          npx conventional-changelog-cli -p conventionalcommits -r 1 -o /tmp/CHANGELOG.md
+          cat /tmp/CHANGELOG.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: /tmp/CHANGELOG.md
 
       - run: npm ci
       - run: npm run build
