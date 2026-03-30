@@ -2,6 +2,7 @@
 	"name": "trek-mcp-server",
 	"version": "1.0.0",
 	"description": "MCP server for TREK travel planner API",
+	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
 	"scripts": {
