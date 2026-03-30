@@ -1,6 +1,6 @@
 # trek-mcp-server
 
-MCP (Model Context Protocol) server for [TREK](https://github.com/Pulkitxm/trek) — a self-hosted collaborative travel planner.
+MCP (Model Context Protocol) server for [TREK](https://github.com/mauriceboe/TREK) — a self-hosted collaborative travel planner.
 
 Exposes 25 tools for managing trips, places, itineraries, budgets, packing lists, reservations, and collaboration via AI assistants (Claude Code, Claude Desktop).
 
