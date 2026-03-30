@@ -1,8 +1,6 @@
 # trek-mcp-server
 
-MCP (Model Context Protocol) server for [TREK](https://github.com/mauriceboe/TREK) — a self-hosted collaborative travel planner.
-
-Exposes 25 tools for managing trips, places, itineraries, budgets, packing lists, reservations, and collaboration via AI assistants (Claude Code, Claude Desktop).
+MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 25 tools.
 
 ## Requirements
 
@@ -11,7 +9,7 @@ Exposes 25 tools for managing trips, places, itineraries, budgets, packing lists
 
 ## Installation
 
-### Via npm (recommended)
+### npm
 
 ```bash
 npm install -g trek-mcp-server
@@ -28,7 +26,7 @@ npm run build
 
 ## Configuration
 
-Set three environment variables:
+Three environment variables are needed:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -36,9 +34,9 @@ Set three environment variables:
 | `TREK_EMAIL` | Login email | `user@example.com` |
 | `TREK_PASSWORD` | Login password | `your-password` |
 
-### Claude Code / Claude Desktop (Linux/macOS)
+### Linux / macOS
 
-Add to your MCP settings (`~/.claude/settings.json` or `claude_desktop_config.json`):
+Add to `~/.claude/settings.json` or `claude_desktop_config.json`:
 
 ```json
 {
@@ -56,9 +54,9 @@ Add to your MCP settings (`~/.claude/settings.json` or `claude_desktop_config.js
 }
 ```
 
-### Claude Code / Claude Desktop (Windows)
+### Windows
 
-On Windows, `npx` must be launched via `cmd /c`:
+On Windows, `npx` needs `cmd /c`:
 
 ```json
 {
@@ -78,7 +76,7 @@ On Windows, `npx` must be launched via `cmd /c`:
 
 ### From source
 
-If installed from source, use `node` directly:
+If you built from source, point to the compiled entry directly:
 
 ```json
 {
@@ -87,52 +85,52 @@ If installed from source, use `node` directly:
 }
 ```
 
-## Available Tools
+## Tools
 
 ### Trips
-- `trek_list_trips` — List all trips
-- `trek_get_trip` — Get trip details
-- `trek_create_trip` — Create a new trip
-- `trek_update_trip` — Update trip details
+- `trek_list_trips` -list all trips
+- `trek_get_trip` -get trip details
+- `trek_create_trip` -create a trip
+- `trek_update_trip` -update a trip
 
-### Days & Itinerary
-- `trek_list_days` — List days with assignments and notes
-- `trek_update_day` — Update day title/notes
-- `trek_assign_place_to_day` — Assign a place to a day
-- `trek_move_assignment` — Move assignment to another day
-- `trek_remove_assignment` — Remove assignment from a day
+### Days and itinerary
+- `trek_list_days` -list days with assignments and notes
+- `trek_update_day` -update day title or notes
+- `trek_assign_place_to_day` -assign a place to a day
+- `trek_move_assignment` -move an assignment to another day
+- `trek_remove_assignment` -remove an assignment from a day
 
 ### Places
-- `trek_list_places` — List places (with search/filter)
-- `trek_create_place` — Add a place to a trip
-- `trek_update_place` — Update place details
-- `trek_delete_place` — Delete a place
+- `trek_list_places` -list places, with optional search/filter
+- `trek_create_place` -add a place to a trip
+- `trek_update_place` -update place details
+- `trek_delete_place` -delete a place
 
 ### Budget
-- `trek_get_budget` — Get budget items and per-person summary
-- `trek_create_budget_item` — Add an expense
-- `trek_update_budget_item` — Update an expense
+- `trek_get_budget` -get budget items and per-person summary
+- `trek_create_budget_item` -add an expense
+- `trek_update_budget_item` -update an expense
 
 ### Packing
-- `trek_list_packing` — List packing items
-- `trek_manage_packing_item` — Create, update, or delete packing items
+- `trek_list_packing` -list packing items
+- `trek_manage_packing_item` -create, update, or delete a packing item
 
 ### Reservations
-- `trek_list_reservations` — List reservations
-- `trek_manage_reservation` — Create, update, or delete reservations
+- `trek_list_reservations` -list reservations
+- `trek_manage_reservation` -create, update, or delete a reservation
 
 ### Collaboration
-- `trek_list_collab_notes` — List shared notes
-- `trek_create_collab_note` — Create a shared note
-- `trek_send_message` — Send a chat message
+- `trek_list_collab_notes` -list shared notes
+- `trek_create_collab_note` -create a shared note
+- `trek_send_message` -send a chat message
 
 ### Discovery
-- `trek_search_places` — Search places via map provider
-- `trek_get_weather` — Get weather forecast for a location
+- `trek_search_places` -search places via map provider
+- `trek_get_weather` -get weather forecast for a location
 
 ## Authentication
 
-The server authenticates lazily on first API call using `TREK_EMAIL` and `TREK_PASSWORD`. The JWT token is cached and automatically refreshed on 401 responses. MFA is not supported — use an account without MFA enabled.
+The server logs in on first API call using `TREK_EMAIL` and `TREK_PASSWORD`, caches the JWT token, and re-authenticates automatically when it expires. MFA is not supported -use an account without MFA.
 
 ## License
 
