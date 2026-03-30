@@ -9,6 +9,7 @@ import { registerBudgetTools } from "./tools/budget.js";
 import { registerPackingTools } from "./tools/packing.js";
 import { registerReservationTools } from "./tools/reservations.js";
 import { registerCollabTools } from "./tools/collab.js";
+import { registerAccommodationTools } from "./tools/accommodations.js";
 import { registerDiscoveryTools } from "./tools/discovery.js";
 
 const server = new McpServer({
@@ -22,6 +23,7 @@ registerPlaceTools(server);
 registerBudgetTools(server);
 registerPackingTools(server);
 registerReservationTools(server);
+registerAccommodationTools(server);
 registerCollabTools(server);
 registerDiscoveryTools(server);
 

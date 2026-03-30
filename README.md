@@ -1,6 +1,6 @@
 # trek-mcp-server
 
-MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 25 tools.
+MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 29 tools.
 
 ## Requirements
 
@@ -118,6 +118,12 @@ If you built from source, point to the compiled entry directly:
 ### Reservations
 - `trek_list_reservations` -list reservations
 - `trek_manage_reservation` -create, update, or delete a reservation
+
+### Accommodations
+- `trek_list_accommodations` -list hotel stays for a trip
+- `trek_create_accommodation` -add a hotel stay (auto-creates linked reservation)
+- `trek_update_accommodation` -update a hotel stay
+- `trek_delete_accommodation` -delete a hotel stay
 
 ### Collaboration
 - `trek_list_collab_notes` -list shared notes
