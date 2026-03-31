@@ -1,5 +1,7 @@
 # trek-mcp-server
 
+> **Deprecated** — TREK now includes native MCP support. This standalone server is no longer maintained. Please use the built-in MCP integration in TREK directly.
+
 MCP server for [TREK](https://github.com/mauriceboe/TREK), a self-hosted travel planner. Lets AI assistants (Claude Code, Claude Desktop) manage trips, places, budgets, packing lists, reservations, and more through 31 tools.
 
 ## Requirements
